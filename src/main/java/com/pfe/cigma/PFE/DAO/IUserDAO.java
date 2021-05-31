@@ -20,7 +20,9 @@ public interface IUserDAO extends PagingAndSortingRepository<User,Integer> {
 	 User findByuserName(String username);
 	 User findAllByname(String username);
 	 List<User> findAllByRole(Role r);
+	 
 	 Page<User> findAllByNameContainingAndFamilyNameContaining(String name,String familyname,Pageable pageable);
 	 Page<User> findAllByNameContainingAndFamilyNameContainingAndRole(String name,String familyname,Role r,Pageable pageable);
+	 
      Page<User> findAll(Pageable pageable) ;
 }

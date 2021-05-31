@@ -3,9 +3,11 @@ package com.pfe.cigma.PFE.model;
 import java.sql.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -20,4 +22,7 @@ public class DSsub_category {
 	int id;
 	String title;
 	Date createdDate;
+	
+	@ManyToOne()
+	DScategory category;
 }
