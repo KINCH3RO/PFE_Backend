@@ -23,16 +23,17 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.pfe.cigma.PFE.model.DScategory;
 import com.pfe.cigma.PFE.model.DSsub_category;
-import com.pfe.cigma.PFE.service.IDScategoryService;
+import com.pfe.cigma.PFE.model.IRL_Category;
+import com.pfe.cigma.PFE.service.ICategoryService;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/category")
 public class CategoryController {
 	@Autowired
-	IDScategoryService DScategoryService;
+	ICategoryService DScategoryService;
 
-//category
+   //category
 	@GetMapping(path = "all", produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<DScategory> getDScategorys() {
 
@@ -41,7 +42,7 @@ public class CategoryController {
 
 	@GetMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public DScategory getDScategory(@PathVariable("id") int id) {
-   System.out.println("yes");
+		System.out.println("yes");
 		return DScategoryService.getDScategoryById(id);
 	}
 
@@ -80,13 +81,19 @@ public class CategoryController {
 		Pageable p = PageRequest.of(pageNumber, pageSize);
 		return DScategoryService.getPageBytitle(title, p);
 	}
-	
-	//sub-cat
-	
+
+	// sub-cat/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 	@GetMapping(path = "subcat/all", produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<DSsub_category> getDSsubcats() {
 
 		return DScategoryService.getDSsubcategories();
+	}
+
+	@GetMapping(path = "subcat/all/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<DSsub_category> getsubcatsByCategory(@PathVariable int id) {
+
+		return DScategoryService.findAllByCat(id);
 	}
 
 	@GetMapping(path = "subcat/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -117,17 +124,60 @@ public class CategoryController {
 		return "DScategory has been deleted Succesfully";
 	}
 
-
-
 	@GetMapping(path = "subcat/")
-	public Page<DSsub_category> getPageOfSubcats(
-			@RequestParam("pageSize") int pageSize,
-			@RequestParam("pageNumber") int pageNumber,
-			@RequestParam("title") String title,
+	public Page<DSsub_category> getPageOfSubcats(@RequestParam("pageSize") int pageSize,
+			@RequestParam("pageNumber") int pageNumber, @RequestParam("title") String title,
 			@RequestParam("catid") int id) {
 		Pageable p = PageRequest.of(pageNumber, pageSize);
 		return DScategoryService.getPageBytitleAndCategory(title, id, p);
 	}
+	
+	
+	// IRL-cat/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+		@GetMapping(path = "irlCat/all", produces = MediaType.APPLICATION_JSON_VALUE)
+		public List<IRL_Category> getIRLcats() {
+
+			return DScategoryService.getIRL_Categories();
+		}
+
+		
+
+		@GetMapping(path = "irlCat/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+		public IRL_Category getIRLcat(@PathVariable("id") int id) {
+
+			return DScategoryService.getIRL_Category(id);
+		}
+
+		@PostMapping(path = "irlCat/add", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+		public ResponseEntity<?> addIRLcat(@RequestBody IRL_Category u) {
+
+			System.out.println("add received");
+
+			IRL_Category subcat = DScategoryService.addIRL_category(u);
+
+			return new ResponseEntity<>(subcat, HttpStatus.OK);
+		}
+
+		@PutMapping(path = "irlCat/update", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+		public IRL_Category updateIRLcat(@RequestBody IRL_Category u) {
+
+			return DScategoryService.updateIRL_category(u);
+		}
+
+		
+		@DeleteMapping(path = "irlCat/delete/{id}")
+		public String deleteIRLcat(@PathVariable("id") int id) {
+			DScategoryService.deleteIRL_Category(id);
+			return "DScategory has been deleted Succesfully";
+		}
+		
+
+		@GetMapping(path = "irlCat/")
+		public Page<IRL_Category> getIRLpagebytitle(@RequestParam("pageSize") int pageSize,
+				@RequestParam("pageNumber") int pageNumber, @RequestParam("title") String title) {
+			Pageable p = PageRequest.of(pageNumber, pageSize);
+			return DScategoryService.getIRL_page_Bytitle(title, p);
+		}
 
 }

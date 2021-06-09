@@ -126,12 +126,13 @@ public class UserController {
 	}
 
 	@PostMapping(path = "/fileUpload", produces = MediaType.TEXT_PLAIN_VALUE)
-	public String uploadFile(@RequestParam(value = "file") MultipartFile file, @RequestParam(value = "id") int id)
+	public String uploadFile(@RequestParam(value = "file") MultipartFile file)
 			throws IOException {
 
+		
 		System.out.println("requesting file");
-		File f = up.uploadFile("profilePic", id, file, FileType.IMAGE);
-		return "File uploaded";
+		File f = up.uploadFile("profilePic", file);
+		return f.getName();
 	}
 
 //	@GetMapping(path = "/role", produces = MediaType.APPLICATION_JSON_VALUE)

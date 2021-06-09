@@ -1,4 +1,6 @@
 HELP.md
+/src/main/resources/static/UploadedFiles/Images/*
+/src/main/resources/static/UploadedFiles/Videos/*
 target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/

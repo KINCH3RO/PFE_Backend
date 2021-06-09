@@ -8,19 +8,24 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.pfe.cigma.PFE.DAO.ICategoryDAO;
+import com.pfe.cigma.PFE.DAO.IRL_CategoryDAO;
 import com.pfe.cigma.PFE.DAO.ISubCategoryDAO;
 import com.pfe.cigma.PFE.model.DScategory;
 import com.pfe.cigma.PFE.model.DSsub_category;
+import com.pfe.cigma.PFE.model.IRL_Category;
 import com.pfe.cigma.PFE.model.User;
 
 @Service
-public class DScategoryServiceImpl implements IDScategoryService {
+public class CategoryServiceImpl implements ICategoryService {
 
 	@Autowired
 	ICategoryDAO categoryDAO;
 	
 	@Autowired
 	ISubCategoryDAO subcatDAO;
+	@Autowired
+	IRL_CategoryDAO irl_CategoryDAO;
+
 
 	@Override
 	public DScategory addDScategory(DScategory U) {
@@ -115,6 +120,54 @@ public class DScategoryServiceImpl implements IDScategoryService {
 	public List<DSsub_category> getDSsubcategories() {
 		// TODO Auto-generated method stub
 		return (List<DSsub_category>) subcatDAO.findAll();
+	}
+
+	@Override
+	public List<DSsub_category> findAllByCat(int id) {
+		// TODO Auto-generated method stub
+		
+		DScategory cat = categoryDAO.findById(id).get();
+		if(cat==null) {
+			return null;
+		}
+		return subcatDAO.findAllByCategory(cat);
+	}
+
+	@Override
+	public List<IRL_Category> getIRL_Categories() {
+		// TODO Auto-generated method stub
+		return (List<IRL_Category>) irl_CategoryDAO.findAll();
+	}
+
+	@Override
+	public IRL_Category addIRL_category(IRL_Category U) {
+		// TODO Auto-generated method stub
+		return irl_CategoryDAO.save(U);
+	}
+
+	@Override
+	public IRL_Category updateIRL_category(IRL_Category u) {
+		// TODO Auto-generated method stub
+		return irl_CategoryDAO.save(u);
+	}
+
+	@Override
+	public IRL_Category getIRL_Category(int id) {
+		// TODO Auto-generated method stub
+		return irl_CategoryDAO.findById(id).get();
+	}
+
+	@Override
+	public boolean deleteIRL_Category(int id) {
+		// TODO Auto-generated method stub
+		irl_CategoryDAO.deleteById(id);
+		return true;
+	}
+
+	@Override
+	public Page<IRL_Category> getIRL_page_Bytitle(String title, Pageable p) {
+		// TODO Auto-generated method stub
+		return irl_CategoryDAO.findAllByTitleContaining(title, p);
 	}
 
 }
