@@ -79,5 +79,15 @@ public class ServiceServiceImpl implements IServiceService {
 		return serviceDAO.findAllByTitleContainingAndIsDegital(title, p, x);
 	}
 
+	@Override
+	public List<Service> findAllbyUserAndType(int id, boolean x) {
+		// TODO Auto-generated method stub
+		User u = userDAO.findById(id).get();
+		 if(u==null) {
+			 return null;
+		 }
+		  return serviceDAO.findAllByUserAndIsDegital(u,x);
+	}
+
 
 }

@@ -18,4 +18,6 @@ import com.pfe.cigma.PFE.model.Profile;
 @Repository
 public interface IProfileDAO extends PagingAndSortingRepository<Profile,Integer> {
 	 Profile findByUser(User u);
+	 List<Profile> findAllByUserIn(List<User> Users);
+
 }

@@ -32,10 +32,7 @@ public class RoleServiceImpl implements IRoleService {
 	@Override
 	public Role updateRole(Role u) {
 		// TODO Auto-generated method stub
-		Role r = RoleDAO.findByRoleName(u.getRoleName());
-		if(r!=null) {
-			return null;
-		}
+
 		return RoleDAO.save(u);
 	}
 

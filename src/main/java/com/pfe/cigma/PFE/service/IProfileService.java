@@ -20,5 +20,7 @@ public interface IProfileService {
 	boolean deleteProfileById(int id);
 	Page<Profile> getPage(Pageable p);
 	
+	List<Profile> findAllByUsers(List<User> users);
+	
 	
 }

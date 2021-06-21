@@ -18,6 +18,7 @@ public interface IServiceService {
 	List<Service> findAll();
 	List<Service> findAllBytype (Boolean x,String title);
 	List<Service> findAllbyUser(int id);
+	List<Service> findAllbyUserAndType(int id,boolean x);
     Page<Service> findAllBytitleAndServiceType(String title, Pageable p,boolean x );
 	
 	

@@ -96,6 +96,11 @@ public class ServicController {
 		return serviceS.findAllbyUser(id);
 	}
 	
+	@GetMapping(path = "/allByUser/{id}/{type}")
+	public List<Service> findAllByUserAndType(@PathVariable("id") int id, @PathVariable("type") Boolean type) {
+		return serviceS.findAllbyUserAndType(id,type);
+	}
+	
 	@PostMapping(path = "/fileUpload", produces = MediaType.TEXT_PLAIN_VALUE)
 	public String uploadFile(@RequestParam(value = "file") MultipartFile file)
 			throws IOException {

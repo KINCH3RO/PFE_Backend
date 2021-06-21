@@ -88,5 +88,11 @@ public class ProfileController {
 		Pageable p = PageRequest.of(pageNumber, pageSize);
 		return ProfileService.getPage(p);
 	}
+	
+	@PostMapping(path = "allByUsers", produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<Profile> getProfilesByUsers(@RequestBody List<User> users) {
+
+		return ProfileService.findAllByUsers(users);
+	}
 
 }

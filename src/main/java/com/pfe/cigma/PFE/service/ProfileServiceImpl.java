@@ -76,4 +76,10 @@ public class ProfileServiceImpl implements IProfileService {
 		return ProfileDAO.findByUser(u);
 	}
 
+	@Override
+	public List<Profile> findAllByUsers(List<User> users) {
+		// TODO Auto-generated method stub
+		return ProfileDAO.findAllByUserIn(users);
+	}
+
 }

@@ -10,7 +10,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -24,6 +26,8 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
+@NoArgsConstructor
+@AllArgsConstructor
 public class Role {
 
 	@Id
@@ -36,9 +40,7 @@ public class Role {
 //	private List<String> rolePermissions = new ArrayList<>()  ;
 
 
-	public Role(){
-
-	}
+	
 
 	
 }//end Role

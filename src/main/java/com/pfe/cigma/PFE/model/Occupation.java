@@ -1,4 +1,5 @@
 package com.pfe.cigma.PFE.model;
+
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -24,10 +25,9 @@ public class Occupation {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String country;
-
+	private String specialization;
 	private int endYear;
 	private int startYear;
 	private String title;
 
-	
-}//end Occupation
+}// end Occupation

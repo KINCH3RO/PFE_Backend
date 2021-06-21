@@ -2,8 +2,10 @@
 package com.pfe.cigma.PFE.model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
@@ -42,11 +44,11 @@ public class Service {
 	 
     private boolean isDegital;
 	@ElementCollection
-	private List<String> serviceImageUrl = new ArrayList<>();
+	private Set<String> serviceImageUrl = Collections.emptySortedSet();
 	private int mainPhotoIndex;
 	private String title;
 	@ElementCollection
-	private List<String> videoImageUrl = new ArrayList<>();
+	private Set<String> videoImageUrl = Collections.emptySortedSet();
 	
 	@ManyToOne
 	User user;

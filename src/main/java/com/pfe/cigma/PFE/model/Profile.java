@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -35,23 +36,28 @@ public class Profile {
 	private String description;
 	private Date profileDate;
 	private String protfolioWebSiteUrl;
-	public  String speciality;
+	public String speciality;
 	public String primaryLanguage;
-	private boolean completed=false;
-   
-	@OneToMany(cascade = CascadeType.ALL)
+	private boolean completed = false;
+
+	@OneToMany(cascade = CascadeType.ALL,orphanRemoval=true)
+	@JoinColumn(name = "profile_id")
 	public List<Education> educations;
-	@OneToMany(cascade = CascadeType.ALL)
-
+	
+	@OneToMany(cascade = CascadeType.ALL,orphanRemoval=true)
+	@JoinColumn(name = "profile_id")
 	public List<Certification> certifications;
-	@OneToMany(cascade = CascadeType.ALL)
-
+	
+	@OneToMany(cascade = CascadeType.ALL,orphanRemoval=true)
+	@JoinColumn(name = "profile_id")
 	public List<Occupation> occupations;
-	@OneToMany(cascade = CascadeType.ALL)
-
+	
+	@OneToMany(cascade = CascadeType.ALL,orphanRemoval=true)
+	@JoinColumn(name = "profile_id")
 	public List<LanguageLevel> languages;
-	@OneToMany(cascade = CascadeType.ALL)
-
+	
+	@OneToMany(cascade = CascadeType.ALL,orphanRemoval=true)
+	@JoinColumn(name = "profile_id")
 	public List<AssociatedAccounts> associatedAccounts;
 
 	@OneToOne

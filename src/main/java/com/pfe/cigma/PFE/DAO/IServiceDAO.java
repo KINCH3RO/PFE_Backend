@@ -23,6 +23,7 @@ public interface IServiceDAO extends CrudRepository<Service, Integer> {
 	
 	List<Service> findAllByIsDegitalAndTitleContaining(Boolean x,String title);
 	List<Service> findAllByUser(User u);
+	List<Service> findAllByUserAndIsDegital(User u, Boolean x);
 	
 	Page<Service> findAllByTitleContainingAndIsDegital(String title, Pageable p, Boolean x);
 }
