@@ -42,6 +42,8 @@ public class FileUploader {
 			f=FileType.IMAGE;
 		}else if(Arrays.asList(videoExtensions).contains(fileExtension) ) {
 			f=FileType.VIDEO;
+		}else {
+			f=FileType.FILE;
 		}
 		
 		 System.out.println(f.label);

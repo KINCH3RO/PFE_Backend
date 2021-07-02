@@ -16,7 +16,9 @@ import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.Cascade;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -28,6 +30,8 @@ import lombok.ToString;
 @Getter
 @Setter
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
 public class Entreprise {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -46,6 +50,7 @@ public class Entreprise {
 	private String specialization;
 
 	private String status="Normal";
+	
 
 	@ManyToOne
 	User owner;
@@ -58,5 +63,7 @@ public class Entreprise {
 	@OneToMany(cascade = CascadeType.ALL,orphanRemoval = true)
 	@JoinColumn(name="Entreprise_id")
 	List<EntreprisePosts > entreprisePosts;
+	
+	
 
 }// end Entreprise

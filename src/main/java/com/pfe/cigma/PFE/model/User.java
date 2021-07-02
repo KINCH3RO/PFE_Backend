@@ -43,7 +43,7 @@ public class User {
 	private String password;
 	private String profilePhotoUrl;
 	
-	@ManyToMany
+	@ManyToMany()
 	List<Role> role;
 	
 	

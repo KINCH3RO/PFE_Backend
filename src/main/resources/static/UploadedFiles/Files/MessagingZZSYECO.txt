@@ -1,0 +1,22 @@
+1__Premiers pas avec Ionic 4/5 : https://ionicacademy.com/getting-started-with-ionic-4/
+2__Routage et navigation ioniques : https://ionicacademy.com/ionic-routing-navigation/
+3__Appels HTTP : https://ionicacademy.com/ionic-http-calls/
+4__Fonctionnalités de l'appareil natif avec Ionic Native et Cordova : https://ionicacademy.com/ionic-native-cordova/
+5__Stockage des données dans les applications Ionic : https://ionicacademy.com/storing-data-inside-ionic-apps/
+6__Ionic UI, Theming & CSS Variables : https://ionicacademy.com/ionic-ui-theming
+7__Débogage des applications ioniques : https://ionicacademy.com/debugging-ionic-apps/
+
+
+https://ionicacademy.com/ionic-crash-course/
+
+Comment configurer votre environnement et installer Ionic
+Créez une navigation dans la barre d'onglets avec le nouveau système de routage
+Effectuer des appels HTTP vers une API REST et afficher des données JSON
+Stockez des données dans votre application avec Ionic Storage
+Utiliser les fonctionnalités natives de l'appareil via les plugins Cordova
+Stylisez votre application Ionic avec des variables CSS
+Débogage des applications ioniques
+
+
+
+

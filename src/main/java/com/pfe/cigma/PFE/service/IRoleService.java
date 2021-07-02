@@ -20,7 +20,8 @@ public interface IRoleService {
 	Role getRoleById(int id);
 
 	boolean deleteRoleById(int id);
-
+	
+	Role getRoleByName(String name);
 	Page<Role> getPage(Pageable p);
 
 	Page<Role> getPagePerName(String name,Pageable p);

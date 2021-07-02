@@ -10,6 +10,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.MediaType;
+import org.springframework.messaging.handler.annotation.MessageMapping;
+import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,9 +23,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.util.HtmlUtils;
 
 import com.pfe.cigma.PFE.components.FileUploader;
 import com.pfe.cigma.PFE.model.Entreprise;
+import com.pfe.cigma.PFE.model.EntrepriseRecruitments;
+
 import com.pfe.cigma.PFE.model.Orders;
 import com.pfe.cigma.PFE.service.IEntrepriseService;
 
@@ -115,5 +120,12 @@ public class EntrepriseController {
 
 		return EntrepriseService.findAllbyTitle(title, p);
 
+	}
+	//socket
+	@MessageMapping("/participation")
+	@SendTo("/socketBroker/enrepriseParticipation")
+	public boolean participate(int id) throws Exception {
+		
+	return true;
 	}
 }

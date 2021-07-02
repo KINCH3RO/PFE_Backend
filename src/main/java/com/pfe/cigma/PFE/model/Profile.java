@@ -39,6 +39,7 @@ public class Profile {
 	public String speciality;
 	public String primaryLanguage;
 	private boolean completed = false;
+	private boolean blocked=false;
 
 	@OneToMany(cascade = CascadeType.ALL,orphanRemoval=true)
 	@JoinColumn(name = "profile_id")

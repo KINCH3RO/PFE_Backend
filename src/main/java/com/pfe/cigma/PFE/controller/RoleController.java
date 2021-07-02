@@ -43,6 +43,12 @@ public class RoleController {
 
 		return RoleService.getRoleById(id);
 	}
+	@GetMapping(path = "roleName/{name}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public Role getRoleByName(@PathVariable("name") String name) {
+
+		return RoleService.getRoleByName(name);
+	}
+
 
 	@PostMapping(path = "/add", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> addRole(@RequestBody Role u) {

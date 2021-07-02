@@ -19,5 +19,6 @@ import com.pfe.cigma.PFE.model.Profile;
 public interface IProfileDAO extends PagingAndSortingRepository<Profile,Integer> {
 	 Profile findByUser(User u);
 	 List<Profile> findAllByUserIn(List<User> Users);
+	 Page<Profile> findAllByCountryContainingAndPrimaryLanguageContainingAndSpecialityContaining(String country,String langauge,String speciality,Pageable p);
 
 }

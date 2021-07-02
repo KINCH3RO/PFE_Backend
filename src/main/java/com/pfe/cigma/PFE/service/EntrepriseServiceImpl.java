@@ -10,21 +10,24 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.pfe.cigma.PFE.DAO.IEntrepriseDAO;
 import com.pfe.cigma.PFE.DAO.IUserDAO;
 import com.pfe.cigma.PFE.model.Entreprise;
-import com.pfe.cigma.PFE.model.Orders;
+import com.pfe.cigma.PFE.model.EntrepriseRecruitments;
+
 import com.pfe.cigma.PFE.model.User;
 
 @Service
 @Transactional
-public class EntrepriseServiceImpl implements IEntrepriseService{
+public class EntrepriseServiceImpl implements IEntrepriseService {
 
 	@Autowired
-  IEntrepriseDAO entrepriseDAO;
+	IEntrepriseDAO entrepriseDAO;
 	@Autowired
 	IUserDAO userDAO;
-	
+
 	@Override
 	public Entreprise addEntreprise(Entreprise e) {
 		// TODO Auto-generated method stub
@@ -40,8 +43,8 @@ public class EntrepriseServiceImpl implements IEntrepriseService{
 	@Override
 	public boolean DeleteEntreprise(int i) {
 		// TODO Auto-generated method stub
-		 entrepriseDAO.deleteById(i);
-		 return true;
+		entrepriseDAO.deleteById(i);
+		return true;
 	}
 
 	@Override
@@ -54,6 +57,12 @@ public class EntrepriseServiceImpl implements IEntrepriseService{
 	public List<Entreprise> getEntreprises() {
 		// TODO Auto-generated method stub
 		return (List<Entreprise>) entrepriseDAO.findAll();
+	}
+
+	public List<EntrepriseRecruitments> getEntrepriseRects(int id) {
+		List<EntrepriseRecruitments> e = entrepriseDAO.findById(id).get().getEntrepriseRects();
+		return e;
+
 	}
 
 	@Override
@@ -77,5 +86,7 @@ public class EntrepriseServiceImpl implements IEntrepriseService{
 		// TODO Auto-generated method stub
 		return entrepriseDAO.findAllByNameContaining(title, p);
 	}
+
+	
 
 }

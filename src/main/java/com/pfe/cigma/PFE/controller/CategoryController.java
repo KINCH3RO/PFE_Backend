@@ -52,14 +52,20 @@ public class CategoryController {
 		System.out.println("add received");
 
 		DScategory DScategory = DScategoryService.addDScategory(u);
-
+		if(DScategory==null) {
+			return new ResponseEntity<>("Category title  already exist",HttpStatus.INTERNAL_SERVER_ERROR);
+		}
 		return new ResponseEntity<>(DScategory, HttpStatus.OK);
 	}
 
 	@PutMapping(path = "/update", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public DScategory updateDScategory(@RequestBody DScategory u) {
+	public ResponseEntity<?> updateDScategory(@RequestBody DScategory u) {
 
-		return DScategoryService.updateDScategory(u);
+		DScategory DScategory = DScategoryService.updateDScategory(u);
+		if(DScategory==null) {
+			return new ResponseEntity<>("Category title  already exist",HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		return new ResponseEntity<>(DScategory, HttpStatus.OK);
 	}
 
 	@DeleteMapping(path = "/delete/{id}")
@@ -108,14 +114,21 @@ public class CategoryController {
 		System.out.println("add received");
 
 		DSsub_category subcat = DScategoryService.addDSsubcat(u);
-
+		if(subcat==null) {
+			return new ResponseEntity<>("Category title  already exist",HttpStatus.INTERNAL_SERVER_ERROR);
+		}
 		return new ResponseEntity<>(subcat, HttpStatus.OK);
 	}
 
 	@PutMapping(path = "subcat/update", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public DSsub_category updateDSsubcat(@RequestBody DSsub_category u) {
+	public ResponseEntity<?> updateDSsubcat(@RequestBody DSsub_category u) {
 
-		return DScategoryService.updateDSsubcat(u);
+
+		DSsub_category subcat = DScategoryService.updateDSsubcat(u);
+		if(subcat==null) {
+			return new ResponseEntity<>("Category title  already exist",HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		return new ResponseEntity<>(subcat, HttpStatus.OK);
 	}
 
 	@DeleteMapping(path = "subcat/delete/{id}")
@@ -154,15 +167,21 @@ public class CategoryController {
 
 			System.out.println("add received");
 
-			IRL_Category subcat = DScategoryService.addIRL_category(u);
-
-			return new ResponseEntity<>(subcat, HttpStatus.OK);
+			IRL_Category irlCat = DScategoryService.addIRL_category(u);
+			if(irlCat==null) {
+				return new ResponseEntity<>("Category title  already exist",HttpStatus.INTERNAL_SERVER_ERROR);
+			}
+			return new ResponseEntity<>(irlCat, HttpStatus.OK);
 		}
 
 		@PutMapping(path = "irlCat/update", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-		public IRL_Category updateIRLcat(@RequestBody IRL_Category u) {
+		public ResponseEntity<?> updateIRLcat(@RequestBody IRL_Category u) {
 
-			return DScategoryService.updateIRL_category(u);
+			IRL_Category irlCat = DScategoryService.updateIRL_category(u);
+			if(irlCat==null) {
+				return new ResponseEntity<>("Category title  already exist",HttpStatus.INTERNAL_SERVER_ERROR);
+			}
+			return new ResponseEntity<>(irlCat, HttpStatus.OK);
 		}
 
 		

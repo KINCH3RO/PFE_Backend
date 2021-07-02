@@ -13,5 +13,6 @@ public interface IRL_CategoryDAO extends CrudRepository<IRL_Category, Integer> {
 	
 	Page<IRL_Category> findAll(Pageable p);
 	Page<IRL_Category> findAllByTitleContaining(String title,Pageable p);
+	 IRL_Category findByTitle(String Title);
 
 }

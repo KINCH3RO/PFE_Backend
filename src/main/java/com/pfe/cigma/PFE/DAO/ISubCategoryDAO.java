@@ -15,5 +15,6 @@ public interface ISubCategoryDAO extends CrudRepository<DSsub_category, Integer>
 	Page<DSsub_category> findAll(Pageable p);
 	Page<DSsub_category> findAllByTitleContainingAndCategory(String title,DScategory cat,Pageable p);
 	List<DSsub_category> findAllByCategory(DScategory cat);
+	 DSsub_category findByTitle(String Title);
 
 }

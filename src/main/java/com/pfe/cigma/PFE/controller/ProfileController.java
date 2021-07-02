@@ -47,6 +47,13 @@ public class ProfileController {
 
 		return ProfileService.getProfileById(id);
 	}
+	
+
+	@GetMapping(path = "isblocked/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public boolean getProfileStatus(@PathVariable("id") int id) {
+
+		return ProfileService.getProfileStatus(id);
+	}
 
 	@PostMapping(path = "/add", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> addProfile(@RequestBody Profile u) {
@@ -88,11 +95,26 @@ public class ProfileController {
 		Pageable p = PageRequest.of(pageNumber, pageSize);
 		return ProfileService.getPage(p);
 	}
+	@GetMapping(params = { "pageSize", "pageNumber" ,"Country","Speciality","Language"})
+	public Page<Profile> getFiltredPages(@RequestParam("pageSize") int pageSize,
+			@RequestParam("pageNumber") int pageNumber,
+			@RequestParam("Country") String country,
+			@RequestParam("Speciality") String Speciality,
+			@RequestParam("Language") String Language) {
+		System.out.println("yes");
+		Pageable p = PageRequest.of(pageNumber, pageSize);
+		return ProfileService.findAllByCountryAndLangAndSpeciality(country, Language, Speciality,p);
+	}
 	
 	@PostMapping(path = "allByUsers", produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<Profile> getProfilesByUsers(@RequestBody List<User> users) {
 
 		return ProfileService.findAllByUsers(users);
+	}
+	
+	@GetMapping("getSpecialization/{id}")
+	public String getSpecialization(@PathVariable("id") int id) {
+		return ProfileService.getSpecialisation(id);
 	}
 
 }

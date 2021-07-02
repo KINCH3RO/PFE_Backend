@@ -32,7 +32,10 @@ public class RoleServiceImpl implements IRoleService {
 	@Override
 	public Role updateRole(Role u) {
 		// TODO Auto-generated method stub
-
+		Role r = RoleDAO.findByRoleName(u.getRoleName());
+		if(r!=null && r.getIdRole()!=u.getIdRole()) {
+			return null;
+		}
 		return RoleDAO.save(u);
 	}
 
@@ -71,6 +74,12 @@ public class RoleServiceImpl implements IRoleService {
 	public Page<Role> getPagePerName(String name, Pageable p) {
 		// TODO Auto-generated method stub
 		return RoleDAO.findAllByRoleNameContaining(name, p);
+	}
+
+	@Override
+	public Role getRoleByName(String name) {
+		// TODO Auto-generated method stub
+		return RoleDAO.findByRoleName(name);
 	}
 
 }

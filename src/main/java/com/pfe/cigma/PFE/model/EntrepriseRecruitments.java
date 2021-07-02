@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -28,7 +30,7 @@ public class EntrepriseRecruitments {
 	Date createdDate;
 	boolean completed;
 	
-	@ManyToMany
+	@ManyToMany()
 	List<User> participants;
 
 }

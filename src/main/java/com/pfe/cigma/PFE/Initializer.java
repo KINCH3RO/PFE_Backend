@@ -25,7 +25,7 @@ public class Initializer implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 	  if(ddlValue.equals("create")) {
-		  String[] mandaroryRoles= {"ADMIN","USER_ADMIN", "SUPPORT", "USER"};
+		  String[] mandaroryRoles= {"ADMIN","USER_ADMIN", "SUPPORT", "USER","SELLER","BUYER"};
 		  
 		  for (String role : mandaroryRoles) {
 			 roleService.addRole(new Role(0,role,"",new Date()));

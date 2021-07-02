@@ -19,8 +19,10 @@ public interface IProfileService {
 	Profile getProfileById(int id);
 	boolean deleteProfileById(int id);
 	Page<Profile> getPage(Pageable p);
-	
 	List<Profile> findAllByUsers(List<User> users);
+	Page<Profile> findAllByCountryAndLangAndSpeciality(String country,String lang,String spec,Pageable p);
+	boolean getProfileStatus(int id);
+	String getSpecialisation(int userId);
 	
 	
 }
